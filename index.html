@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>paslon 01</title>
+<title>Paslon 01 - OSIS 2024</title>
 <style>
 /* Reset */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -11,21 +11,37 @@ body { background:#0d1b2a; color:#fff; line-height:1.6; overflow-x:hidden; }
 
 /* Neon animation */
 @keyframes neonGlow {
-  0%, 100% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f; }
-  50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f; }
+ 0%, 100% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f; }
+ 50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f; }
 }
 
-/* Header */
+/* Hero Header */
 header {
     background: linear-gradient(135deg,#001f3f,#004080);
     text-align:center;
-    padding:60px 20px;
+    padding:80px 20px;
     border-bottom-left-radius:30px;
     border-bottom-right-radius:30px;
     box-shadow:0 6px 20px rgba(0,0,0,0.5);
+    position:relative;
+    overflow:hidden;
 }
-header h1 { font-size:3em; margin-bottom:10px; color:#fff; animation:neonGlow 2s infinite alternate; }
-header p { font-size:1.2em; color:#cce6ff; }
+header::before {
+    content:"";
+    position:absolute;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle, rgba(0,255,255,0.2) 0%, transparent 70%);
+    animation: rotateBG 20s linear infinite;
+}
+@keyframes rotateBG {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+header h1 { font-size:3em; margin-bottom:10px; color:#fff; animation:neonGlow 2s infinite alternate; z-index:1; position:relative; }
+header p { font-size:1.2em; color:#cce6ff; z-index:1; position:relative; }
 
 /* Navbar */
 nav {
@@ -55,7 +71,7 @@ nav ul li a:hover { color:#00f; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
 section { max-width:1100px; margin:50px auto; padding:0 20px; opacity:0; transform:translateY(20px); transition:0.8s ease-out; }
 section.show { opacity:1; transform:translateY(0); }
 
-/* Hero */
+/* Hero Section */
 .hero {
     text-align:center;
     background:linear-gradient(135deg,#001f3f,#003366);
@@ -121,11 +137,28 @@ footer {
     border-top-right-radius:20px;
 }
 
-/* Responsive */
+/* Responsive Hamburger Menu */
 @media(max-width:768px){
-    nav ul { flex-direction:column; position:absolute; top:55px; left:0; width:100%; background:#001f3f; overflow:hidden; max-height:0; }
-    nav ul.show { max-height:500px; padding-bottom:10px; }
-    nav ul li { text-align:center; padding:12px 0; }
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 55px;
+        left: 50%; /* tampil di tengah */
+        transform: translateX(-50%);
+        width: auto; /* kecil, tidak full screen */
+        background: #001f3f;
+        overflow: hidden;
+        max-height: 0;
+        border-radius: 10px;
+        padding: 0 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        transition: max-height 0.3s ease-in-out;
+    }
+    nav ul.show {
+        max-height: 300px; /* cukup menampung menu */
+        padding: 10px 0;
+    }
+    nav ul li { text-align: center; padding: 10px 0; }
     .hamburger { display:flex; }
 }
 </style>
@@ -152,7 +185,13 @@ footer {
         <span></span>
     </div>
 </nav>
-  
+
+<section id="home" class="hero">
+    <h2>Selamat Datang di Kampanye Kami!</h2>
+    <p>Bersama kita ciptakan sekolah lebih baik dan hijau</p>
+    <button onclick="alert('Terima kasih atas dukungannya!')">Dukung Kami</button>
+</section>
+
 <section id="kandidat">
     <h2>Tentang Kandidat</h2>
     <div class="kandidat">
