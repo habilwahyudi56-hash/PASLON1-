@@ -7,12 +7,12 @@
 <style>
 /* Reset */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { background:#0d1b2a; color:#e0e0e0; line-height:1.6; overflow-x:hidden; }
+body { background:#0d1b2a; color:#fff; line-height:1.6; overflow-x:hidden; }
 
-/* Animasi kelistrikan glow */
+/* Neon animation */
 @keyframes neonGlow {
   0%, 100% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f; }
-  50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; }
+  50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00f; }
 }
 
 /* Header */
@@ -24,8 +24,8 @@ header {
     border-bottom-right-radius:30px;
     box-shadow:0 6px 20px rgba(0,0,0,0.5);
 }
-header h1 { font-size:3em; margin-bottom:10px; color:#00f; animation:neonGlow 2s infinite alternate; }
-header p { font-size:1.2em; color:#99ccff; }
+header h1 { font-size:3em; margin-bottom:10px; color:#fff; animation:neonGlow 2s infinite alternate; }
+header p { font-size:1.2em; color:#cce6ff; }
 
 /* Navbar */
 nav {
@@ -39,9 +39,9 @@ nav {
     z-index:100;
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
-nav .logo { color:#00f; font-weight:bold; font-size:20px; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
+nav .logo { color:#fff; font-weight:bold; font-size:20px; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
 nav ul { list-style:none; display:flex; gap:30px; transition:max-height 0.3s ease-in-out; }
-nav ul li a { color:#e0e0e0; text-decoration:none; font-weight:600; transition: color 0.3s; }
+nav ul li a { color:#fff; text-decoration:none; font-weight:600; transition: color 0.3s; }
 nav ul li a:hover { color:#00f; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
 
 /* Hamburger */
@@ -59,19 +59,19 @@ section.show { opacity:1; transform:translateY(0); }
 .hero {
     text-align:center;
     background:linear-gradient(135deg,#001f3f,#003366);
-    color:#00f;
+    color:#fff;
     padding:80px 20px;
     border-radius:25px;
     box-shadow:0 8px 20px rgba(0,0,0,0.7);
     border:2px solid #00f;
 }
-.hero p { color:#99ccff; font-size:1.2em; margin-top:10px; }
+.hero p { color:#cce6ff; font-size:1.2em; margin-top:10px; }
 .hero button {
     margin-top:25px;
     padding:15px 30px;
     font-size:16px;
     font-weight:bold;
-    color:#00f;
+    color:#fff;
     background:none;
     border:2px solid #00f;
     border-radius:10px;
@@ -79,7 +79,7 @@ section.show { opacity:1; transform:translateY(0); }
     box-shadow:0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #00f;
     transition:0.3s all;
 }
-.hero button:hover { background:#00f; color:#001f3f; box-shadow:0 0 20px #0ff,0 0 30px #00f,0 0 40px #0ff; }
+.hero button:hover { background:#00f; color:#fff; box-shadow:0 0 20px #0ff,0 0 30px #00f,0 0 40px #0ff; }
 
 /* Kandidat */
 .kandidat { display:flex; justify-content:space-around; flex-wrap:wrap; gap:25px; margin-top:30px; }
@@ -96,6 +96,7 @@ section.show { opacity:1; transform:translateY(0); }
 }
 .kandidat div:hover { transform:translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,0.8),0 0 15px #0ff; }
 .kandidat img { width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:2px solid #00f; }
+.kandidat h3, .kandidat p { color:#fff; }
 
 /* Visi & Program & Kontak */
 .visi-misi, .program, #kontak {
@@ -107,14 +108,14 @@ section.show { opacity:1; transform:translateY(0); }
 }
 h2 { color:#00f; text-align:center; margin-bottom:20px; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
 ul { list-style: disc; padding-left:25px; margin-top:10px; }
-ul li { margin-bottom:10px; }
+ul li { margin-bottom:10px; color:#fff; }
 
 /* Footer */
 footer {
     text-align:center;
     padding:25px;
     background:#001f3f;
-    color:#00f;
+    color:#fff;
     box-shadow:0 -4px 10px rgba(0,0,0,0.5);
     border-top-left-radius:20px;
     border-top-right-radius:20px;
