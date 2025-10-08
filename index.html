@@ -5,21 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kampanye OSIS - Tim Maju Bersama</title>
 <style>
-/* Reset dasar */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f0f4f8; color:#333; line-height:1.6; }
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background:#0d1b2a; color:#e0e0e0; line-height:1.6; overflow-x:hidden; }
+
+/* Animasi kelistrikan glow */
+@keyframes neonGlow {
+  0%, 100% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 20px #00f; }
+  50% { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff; }
+}
 
 /* Header */
 header {
-    background: linear-gradient(90deg, #1a2a6c, #b21f1f, #fdbb2d);
-    color:white;
+    background: linear-gradient(135deg,#001f3f,#004080);
     text-align:center;
     padding:60px 20px;
     border-bottom-left-radius:30px;
     border-bottom-right-radius:30px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);
 }
-header h1 { font-size:3em; margin-bottom:10px; }
-header p { font-size:1.2em; }
+header h1 { font-size:3em; margin-bottom:10px; color:#00f; animation:neonGlow 2s infinite alternate; }
+header p { font-size:1.2em; color:#99ccff; }
 
 /* Navbar */
 nav {
@@ -27,54 +33,100 @@ nav {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px 20px;
-    position: sticky;
+    padding:12px 20px;
+    position:sticky;
     top:0;
     z-index:100;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
-nav .logo { color:white; font-weight:bold; font-size:20px; }
-nav ul { list-style:none; display:flex; gap:30px; transition: max-height 0.3s ease-in-out; }
-nav ul li a { color:white; text-decoration:none; font-weight:600; transition: color 0.3s; }
-nav ul li a:hover { color:#00aaff; }
+nav .logo { color:#00f; font-weight:bold; font-size:20px; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
+nav ul { list-style:none; display:flex; gap:30px; transition:max-height 0.3s ease-in-out; }
+nav ul li a { color:#e0e0e0; text-decoration:none; font-weight:600; transition: color 0.3s; }
+nav ul li a:hover { color:#00f; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
 
 /* Hamburger */
 .hamburger { display:none; flex-direction: column; cursor:pointer; width:30px; height:25px; justify-content:space-between; }
-.hamburger span { height:3px; width:100%; background:white; border-radius:2px; transition: all 0.4s; }
-
-/* Section */
-section { max-width:1100px; margin:40px auto; padding:0 20px; }
-.hero { text-align:center; background:#007bff; color:#fff; padding:60px 20px; border-radius:20px; box-shadow:0 6px 15px rgba(0,0,0,0.1); }
-.hero button { margin-top:20px; background:#001f3f; border:none; padding:12px 25px; border-radius:8px; color:white; font-size:16px; cursor:pointer; transition: background 0.3s; }
-.hero button:hover { background:#004080; }
-
-.kandidat { display:flex; justify-content:space-around; flex-wrap:wrap; gap:25px; margin-top:20px; }
-.kandidat div { background:#fff; padding:30px 20px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); text-align:center; flex:1 1 280px; max-width:320px; transition: transform 0.3s; }
-.kandidat div:hover { transform: translateY(-5px); }
-.kandidat img { width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px; }
-
-.visi-misi, .program, #kontak { background:#fff; padding:35px 30px; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.08); margin:30px 0; }
-h2 { margin-bottom:15px; color:#001f3f; text-align:center; }
-ul { list-style:disc; padding-left:25px; margin-top:10px; }
-
-button { background:#001f3f; color:white; border:none; padding:10px 22px; border-radius:5px; cursor:pointer; font-size:15px; transition: background 0.3s; }
-button:hover { background:#004080; }
-
-footer { text-align:center; padding:20px; background:#001f3f; color:white; margin-top:40px; border-top-left-radius:15px; border-top-right-radius:15px; }
-
-/* Responsive */
-@media(max-width:768px){
-    nav ul { flex-direction:column; position:absolute; top:60px; left:0; width:100%; background:#001f3f; overflow:hidden; max-height:0; }
-    nav ul.show { max-height:500px; padding-bottom:10px; }
-    nav ul li { text-align:center; padding:12px 0; }
-    .hamburger { display:flex; }
-}
-
-/* Hamburger X animation */
+.hamburger span { height:3px; width:100%; background:#00f; border-radius:2px; transition: all 0.4s; }
 .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.active span:nth-child(2) { opacity:0; }
 .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
+/* Sections */
+section { max-width:1100px; margin:50px auto; padding:0 20px; opacity:0; transform:translateY(20px); transition:0.8s ease-out; }
+section.show { opacity:1; transform:translateY(0); }
+
+/* Hero */
+.hero {
+    text-align:center;
+    background:linear-gradient(135deg,#001f3f,#003366);
+    color:#00f;
+    padding:80px 20px;
+    border-radius:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.7);
+    border:2px solid #00f;
+}
+.hero p { color:#99ccff; font-size:1.2em; margin-top:10px; }
+.hero button {
+    margin-top:25px;
+    padding:15px 30px;
+    font-size:16px;
+    font-weight:bold;
+    color:#00f;
+    background:none;
+    border:2px solid #00f;
+    border-radius:10px;
+    cursor:pointer;
+    box-shadow:0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #00f;
+    transition:0.3s all;
+}
+.hero button:hover { background:#00f; color:#001f3f; box-shadow:0 0 20px #0ff,0 0 30px #00f,0 0 40px #0ff; }
+
+/* Kandidat */
+.kandidat { display:flex; justify-content:space-around; flex-wrap:wrap; gap:25px; margin-top:30px; }
+.kandidat div {
+    background:#002244;
+    padding:25px 20px;
+    border-radius:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.5);
+    text-align:center;
+    flex:1 1 280px;
+    max-width:320px;
+    transition: transform 0.4s, box-shadow 0.4s;
+    border:2px solid #00f;
+}
+.kandidat div:hover { transform:translateY(-8px); box-shadow:0 10px 25px rgba(0,0,0,0.8),0 0 15px #0ff; }
+.kandidat img { width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:15px; border:2px solid #00f; }
+
+/* Visi & Program & Kontak */
+.visi-misi, .program, #kontak {
+    background:#001f3f;
+    border:2px solid #00f;
+    border-radius:20px;
+    padding:35px 30px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.6);
+}
+h2 { color:#00f; text-align:center; margin-bottom:20px; text-shadow:0 0 5px #0ff,0 0 10px #0ff; }
+ul { list-style: disc; padding-left:25px; margin-top:10px; }
+ul li { margin-bottom:10px; }
+
+/* Footer */
+footer {
+    text-align:center;
+    padding:25px;
+    background:#001f3f;
+    color:#00f;
+    box-shadow:0 -4px 10px rgba(0,0,0,0.5);
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    nav ul { flex-direction:column; position:absolute; top:55px; left:0; width:100%; background:#001f3f; overflow:hidden; max-height:0; }
+    nav ul.show { max-height:500px; padding-bottom:10px; }
+    nav ul li { text-align:center; padding:12px 0; }
+    .hamburger { display:flex; }
+}
 </style>
 </head>
 <body>
@@ -171,13 +223,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Hamburger toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('nav ul');
-
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('show');
     hamburger.classList.toggle('active');
+});
+
+// Fade-in scroll animation
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < triggerBottom) { section.classList.add('show'); }
+    });
 });
 </script>
 
 </body>
 </html>
-
